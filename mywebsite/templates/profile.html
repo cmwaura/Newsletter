@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+<style>
+{% block style %}
+
+.container {
+background-color:slategray;
+}
+* { margin: 0;
+    padding: 0; }
+html { height: 101%; }
+body { background: #f2f2f2 url('images/bg-tile.png');
+    font-size: 62.5%;
+    padding-bottom: 65px; }
+
+h1 { font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+    color: #454545; font-size: 5em;
+    margin-bottom: 6px; }
+h2 { font-family: "Simonetta", "Trebuchet MS", Arial, sans-serif;
+    color: #484848; font-size: 4em; margin-bottom: 10px;
+    text-decoration: underline; }
+h3 { font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+    color: #777; font-weight: normal; font-size: 3em;
+    margin-bottom: 10px; }
+h4 { font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+    color: #656565; font-weight: bold;
+    font-size: 2.5em;
+    margin-bottom: 4px; }
+
+p { font-family: "Balthazar", "Droid Serif", serif; color: #565656; font-size: 3em; line-height: 1.4em; margin-bottom: 15px; padding-left: 35px; }
+small { font-family: "Balthazar", "Droid Serif", serif; color: #656565; font-size: 4em; display: block; margin-bottom: 6px; }
+ul { display: block; list-style: none; }
+ul li { padding-left: 45px; list-style-type: none; vertical-align: top; background: url('images/bullet.png') 25px 5px no-repeat; margin-bottom: 5px; font-family: "Balthazar", "Droid Serif", serif; color: #666; font-size: 3em; line-height: 2.3em; }
+
+img { border: 0; max-width: 100%; }
+
+a { color: #5582d6; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/** @group core layout **/
+
+
+#w { margin: 0px 50px; padding: 20px 40px; padding-top: 35px; background: #fff; min-width: 260px; max-width: 900px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; -webkit-border-bottom-left-radius: 8px; -webkit-border-bottom-right-radius: 8px; -moz-border-radius-bottomleft: 8px; -moz-border-radius-bottomright: 8px; }
+
+header { width: 100%; }
+
+/** @group personal settings **/
+#info { float: left; margin-bottom: 12px; }
+#photo { float: right; }
+#photo img {
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+background-color: #fff;
+border: 1px solid #ccc;
+padding: 5px;
+}
+
+/** @group skills **/
+#skills-left { display: block; float: left; margin-right: 30px; }
+#skills-right { display: block; float: left;}
+
+/** @group clearfix **/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+{% endblock %}
+</style>
+
+{% block content%}
+
+{% if request.user.is_authenticated %}
+
+<head>
+  <meta name="HandheldFriendly" content="true">
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Simonetta:400,900|Balthazar">
+{#  <link rel="stylesheet" type="text/css" href="styles.css">#}
+  <link rel="stylesheet" type="text/css" href="responsive.css">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+	<div id="w" itemscope itemtype="http://schema.org/Person">
+		<header class="clearfix">
+			<div id="info">
+				<h1><span itemprop="name">Crispus Mwaura</span></h1>
+				<h3><span itemprop="jobTitle">Python analyst &amp; Web Developer</span></h3>
+				<small itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+				  <span itemprop="addressLocality">Los Angeles</span>,
+				  <span itemprop="addressRegion">California</span>,
+				  <span itemprop="addressCountry">USA</span>
+				</small>
+				<small><span itemprop="email">cmmwaura@ucdavis.edu</span></small>
+				<small><a href="#" itemprop="url">My Recent work (ecommerce site) alpha version</a>;</small>
+			</div>
+
+			<div id="photo">
+				<img src="https://scontent-sjc2-1.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10264579_296696363845441_2174595106992226756_n.jpg?oh=9119f638cd290d2c6d07839e580d53dd&oe=56909D0A" alt="resume photo avatar" itemprop="image" />
+			</div>
+		</header>
+        <hr>
+		<section id="profile">
+			<h2>My History &amp; Profile</h2>
+			<p itemprop="description">I'm a 25 year old web developer and designer working out of
+                Los Angeles. I have been programming in general for about 6 years with more than two years experience
+                in python and pascal programming. During my College career in University of Davis, I learned two more
+                statistical based languages which include Stata, R and Matlab.</p>
+
+			<p>After graduating, I decided that it was time for me to take a few months of and concentrate on improving
+                my skills. I am currently in the alpha stage of testing of an ecommerce site that i build in an online
+                class as well as the beta stage of this website which was built in Django.</p>
+		</section>
+
+        <hr>
+		<section id="skills" class="clearfix" itemscope itemtype="http://schema.org/ItemList">
+			<h2 itemprop="name">Skillset</h2>
+			<section id="skills-left">
+				<h4 itemprop="about">Development</h4>
+				<ul>
+                    <li itemprop="itemListElement">Python Backend and Scripting(Parsing)</li>
+                    <li itemprop="itemListElement">Django Frameworks</li>
+                    <li itemprop="itemListElement">SQL Databases</li>
+                    <li itemprop="itemListElement">Pascal Programming</li>
+                    <li itemprop="itemListElement">Stata</li>
+					<li itemprop="itemListElement">HTML5/CSS3</li>
+					<li itemprop="itemListElement">Some jQuery</li>
+					<li itemprop="itemListElement">Some Objective-C</li>
+				</ul>
+			</section>
+
+			<section id="skills-right">
+				<h4 itemprop="about">Software</h4>
+				<ul>
+                    <li itemprop="itemListElement">MS Office 2007-2010</li>
+					<li itemprop="itemListElement">Adobe Photoshop</li>
+					<li itemprop="itemListElement">Business Planner pro</li>
+					<li itemprop="itemListElement">Stata</li>
+					<li itemprop="itemListElement">PyCharm</li>
+				</ul>
+			</section>
+		</section>
+
+        <hr>
+		<section id="education">
+			<h2>Past Education</h2>
+            <div class="row">
+                <div class="col-sm-6">
+			<p><span itemprop="alumniOf" style="text-align: left;"><a href="http://ucdavis.edu/">University of California, Davis</a></span> graduate of 2015.</p>
+		    </div>
+                <div class="col-sm-6" style="text-align: right;"><p> Bachelors Degree in econ with a minor in mathematics.</p>
+
+                </div>
+                </div>
+        </section>
+
+        <hr>
+		<section id="experience">
+			<h2>Work Experience</h2>
+			<p>Freelance Web Designer/Developer ~2014-2015</p>
+			<p>Interim General Manager for the Club basketball team  U.C. Davis ~2015</p>
+			<p>Freelance solution Analyst for <span itemprop="worksFor">Mindsumo.com</span> ~ 2014-Present</p>
+		</section>
+
+
+	</div>
+</body>
+    {%  endif %}
+{% endblock %}
+</html>
+

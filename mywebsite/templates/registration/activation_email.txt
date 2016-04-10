@@ -1,0 +1,13 @@
+{% load i18n %}
+{% trans "Activate account at" %} {{ site.name }}:
+
+Hello there, welcome to Savannah!
+
+Click the link below to activate your account.
+
+http://{{ site.domain }}{% url 'registration_activate' activation_key %}
+http://127.0.0.1:8000/accounts/activate/2ce1ad2811fda0ff693531a8a0a02e682efcf50b
+
+{% blocktrans %}The above link is valid for {{ expiration_days }} days.{% endblocktrans %}
+
+Savannah

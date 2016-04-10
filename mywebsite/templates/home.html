@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block head_title %} Welcome | {% endblock %}
+
+<style>
+{% block style %}
+    .navbar-static-top{
+    margin-bottom: 4px! important;
+    }
+    .jumbotron{
+    background-color: #191919;
+        font-size: 61px;
+    color: navajowhite;
+
+
+    }
+    .jumbotron h1 {
+        color: navajowhite;
+    }
+
+{% endblock %}
+</style>
+
+{% block jumbotron %}
+<div class='container'>
+<div class="jumbotron">
+
+<div class="row" >
+        <div class=" col-xs-6">
+        <h2>Marketplace Newsletter Website</h2>
+        <p>Welcome to This newsletter website.</br>
+        This is a website with the aim of sending you monthly newsletters on published APIS out there with an in
+        depth analysis on how to best use them. For more information, please check the about page and I hope you enjoy
+        the ride. For any questions/requests please click the contact us button and i will get back to you as
+        soon as possible</p>
+        <p>
+        <a class="btn btn-lg btn-primary" href="{% url 'contact' %}" role="button">Contact Us &raquo;</a>
+        </p>
+        </div>
+        <div class=" col-sm-6" >
+            <img src="http://musicarchive.sdsmt.edu/travel/images/Melk/Library.JPG" class='img-responsive' />
+        </div>
+        </div>
+
+</div>
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <h1>You are logged in!</h1>
+        {% if queryset %}
+            <h2>welcome Staff</h2>
+    {{ queryset }}
+            {% endif %}
+    {% else %}
+<div class="row">
+<div class="col-xs-3">
+    <p class = lead text-align-center>Built with django &amp; Bootstrap</p>
+    <i class="fa fa-book"></i>
+</div>
+
+  <div class="col-xs-3 pull-right">
+        <p class="lead text-align-center">{{ title }}</p>
+        <form method="POST" action=""> {% csrf_token %}
+        {{form|crispy}}
+
+
+        <input class = 'btn btn-primary' type="submit", value="Sign Up" />
+
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
